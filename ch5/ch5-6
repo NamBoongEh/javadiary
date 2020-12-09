@@ -1,0 +1,18 @@
+1. 2020-12-09 오후 3시 37분 시청
+	새롭게 알게 된 점 :
+	1) 배열 출력할때 index 번호 안붙이면 문자가 나왔던 것, 유일한 예외사항은 char 형식의 배열이다.
+		char[] arr = {'a', 'wq', 'fdhgfdgh'};
+		System.out.println(arr);
+		출력 시 awqfdhgfdgh 이렇게 붙어서 이상한 문자가 뜨지않고 나온다.
+		
+	2) 배열의 모든 요소를 한 번에 출력하고 싶을 때 쓰는 방법
+		int[] arr = { 1, 5, 9, 11};
+		System.out.println(Arrays.toString(arr));
+		출력 시 [1,5,9,11] 이렇게 나온다.
+		
+		의문점 : 한 줄로 출력되는데 대괄호가 필요없을 시 어떻게 해야할지.
+		생각해본 것 : 다른 String 변수로 Arrays.toString(arr)을 받아서 replace.all("[", "")로 대괄호를 지워준다.
+				String a = Arrays.toString(arr);
+				a = a.replaceall("[", "");
+				
+	3) 자동으로 Arrays나 Scanner import문 추가하는 방법 : ctrl + shift + o
