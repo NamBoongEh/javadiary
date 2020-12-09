@@ -7,3 +7,4 @@
 		(단, 기본적으로 static void main(String[] args)로 쓰기 때문에 String 형으로 출력된다)
 		
 		의문점 : 그럼 main을 String[] args에서 int[] args로 바꾸면 숫자만 받을 수 있는지.
+		해본것 : 그대로 코딩을 한 뒤 int[] args로 바꾸어봤으나 에러가 난다.
