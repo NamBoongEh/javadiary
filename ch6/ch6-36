@@ -1,0 +1,54 @@
+1. 2020-12-10 오후 10시 47분 시청
+
+	1. 생성자 this()
+		- 생성자에서 다른 생성자 호출할 때 사용
+		- 다른 생성자 호출시 첫 줄에서만 사용가능
+		
+		코드 중복을 없애기위해 쓴다!
+		
+		
+		Car() {
+			color = " white"
+			gearType = "auto"
+			door = 4;
+		}
+		
+		Car(String c. String g, int d){
+			color = c;
+			gearType = g;
+			door = d;
+		}
+		
+		기본 생성자와 매개변수가 있는 생성자의 iv인스턴스 변수가 같다.
+		그러니 중복을 제거하면 이렇게 된다.
+		
+		
+		Car() {
+			this("White", "auto", 4);
+		}
+		
+		Car(String c. String g, int d){
+			color = c;
+			gearType = g;
+			door = d;
+		}
+		
+		this에 있는 값들이 밑의 매개변수가 있는 생성자로 가도록 한다.
+		
+		
+		
+	2. 참조변수 this
+		- 인스턴스 자신을 가리키는 참조변수
+		- 인스턴스 메서드(생서자 포함)에서 사용가능  (클래스 메서드(static 매서드)에서는 사용을 못한다는거다)
+		- 지역변수lv와 인스턴스 변수iv를 구별할 때 사용
+		
+		Car(String color, String gearType, int door) { // lv변수들
+			this.color = color;
+			this.gearType = gearType;
+			this.door = door;
+			iv 인스턴스 변수 = lv 지역 변수
+		}
+		
+		this 붙은 쪽과 우측과 보면 변수명이 똑같다!
+		this를 빼면 컴퓨터는 똑같은건데???라고 헷갈릴거다.
+		그러니 왼쪽은 iv인스턴스 변수이고, 오른쪽은 lv지역변수다 라고 알려줘야한다.
