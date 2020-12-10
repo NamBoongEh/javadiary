@@ -1,0 +1,17 @@
+1. 2020-12-10 오후 4시 16분 시청
+
+	1. 호출 스택의 변화(call stsack)
+	
+		Class Ex{
+			public static void main(String[] args){
+				System.out.println("Hello");
+			}
+		}
+		
+		1) 스택이 비어있음.
+		2) main문 스택에 들어감.
+		3) mian이 println을 호출하여 스택에 println이 들어감.
+		3-1) main은 대기되고 println이 실행됨.
+		4) println은 실행을 마치고 날라감.
+		4-1) main이 다시 실행함
+		5) 프로그램 종료

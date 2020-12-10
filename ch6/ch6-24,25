@@ -1,0 +1,61 @@
+1. 2020-12-10 오후 6시 10분 시청
+
+	1. 참조형 매개변수는 메서드에서 출력하고나면 메모리 스택에 남기 때문에 기본 값이 변한다.
+		기본형 매개변수 = 휘발성 변화 박스
+		참조형 매개변수 = 비휘발성 변화 박스
+		
+		class EX{
+			public static void main(String[] args){
+				Data d = new Data();
+				d.x = 10;
+				
+				System.out.println("1번 " + d.x);				
+				change(d);				
+				System.out.println("3번 " + d.x);
+			}
+			
+			static void change(Data d){ // 참조형 매개변수 (Data d)
+			
+				d.x = 1000;
+				
+				System.out.println("2번 " + d.x);
+			}
+		}
+		
+		결과
+		1번 10
+		2번 1000
+		3번 1000
+		
+		참조형 매개변수는 값이 계속해서 바뀐채로 남는다.
+		(참조형 매개변수는 주소 자체를 통채로 줘버렸기에 남을 수 있다.)
+		
+	
+	2.	참조형 반환타입은 메서드에서 주소를 반환하여 메서드 출력하고 나서도 main이 메서드에 있는 참조형의 주소를 기억하고있는다.
+		기본형 매개변수 = 휘발성 변화 박스
+		참조형 매개변수 = 비휘발성 변화 박스
+		참조형 반환타입 = 주소값을 기억하고있음
+		
+		class EX{
+			public static void main(String[] args){
+				Data d = new Data();
+				d.x = 10;
+				
+				Data d2 = copy(d);
+				System.out.println("main에 있던 거에요 " + d.x);
+				System.out.println("copy 메서드에서 가져왔어요 " + d2.x);
+			}
+			
+			static Data copy(Data d){ // 참조형 반환타입(void나 int가 아니다! Data 객체로 반환하라고 되어있다!!!)
+			
+				Data temp = new Data(); //새로운 객체 생성
+				
+				temp.x = d.x; // temp의 x값은 Data d의 값을 복사한다.
+				
+				return temp; // 그래서 temp의 x값이 아니라 temp 객체 자체를 준다!
+			}
+		}
+		
+		결과
+		main에 있던 거에요 10
+		copy 메서드에서 가져왔어요 10

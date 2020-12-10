@@ -1,0 +1,31 @@
+1. 2020-12-10 오후 5시 51분 시청
+
+	1. 기본형 매개변수는 메서드에서 출력하고나면 메모리 스택에선 날라가기 때문에 이후에 다시 메소드를 해줘야한다.
+		기본형 매개변수 = 휘발성 변화 박스
+		참조형 매개변수 = 비휘발성 변화 박스
+		
+		class EX{
+			public static void main(String[] args){
+				Data d = new Data();
+				d.x = 10;
+				
+				System.out.println("1번 " + d.x);				
+				change(d);				
+				System.out.println("3번 " + d.x);
+			}
+			
+			static void change(int x){ // 기본형 매개변수 (int x)
+			
+				x = 1000;
+				
+				System.out.println("2번 " + d.x);
+			}
+		}
+		
+		결과
+		1번 10
+		2번 1000
+		3번 10
+		
+		기본형 매개변수라서 한 번만 일시적으로 바뀌는거다.
+		(기본형 매개변수는 결과 값만 줘버렸기에 주소를 몰라서 다시 가져올 수가 없다.)
