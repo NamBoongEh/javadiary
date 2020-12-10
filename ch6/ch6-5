@@ -1,0 +1,48 @@
+1. 2020-12-10 오전 9시 57분 시청
+
+	1. ex1) Hello2.java
+			public class Hello2{}
+				   class Hello3{}
+				   
+		public class가 있다면 소스파일과 무조건 같아야한다.
+		
+	   ex2) Hello2.java
+	   		class Hello2{}
+	   		class Hello3{}
+	   		
+	   	public class가 없다면 내 마음대로 해도 된다.
+	   	
+	   	
+	   	
+	   	잘못된ex1) Hello2.java
+	   			public class Hello2{}
+	   			public class Hello3{}
+	   			
+	   	문제점 : public class는 한 소스파일에 단 하나만 존재 할 수 있다.
+	   	
+	   	
+	   	잘못된ex2) Hello3.java
+	   			public class Hello2{}
+	   				   class Hello3{}
+	   			
+	   	문제점 : public class는 소스파일과 이름이 같아야한다.(이름이 다르다)
+	   	
+	   		   	
+	   	잘못된ex3) Hello2.java
+	   			public class hello2{}
+	   				   class Hello3{}
+	   			
+	   	문제점 : public class는 소스파일과 이름이 같아야한다.(대소문자 구별한다)
+	   	
+	   	
+	2.  ex) Hello2.java
+	   		class hello2{}
+	   		class hello3{
+	   			public static void main(String[] args){
+	   				System.out.println("hello");
+	   			}
+	   		}
+	   		
+	   		문제는 없다.(소스파일에 public class 없다.)
+	   		그러나 소스파일과 내용이 들은 클래스가 이름이 일치하지않아서 이클립스에선 엉뚱한 것을 실행시킨다.
+	   		(그러니 가능하면 main이 들은 클래스는 이름이 일치하게 해주자)
