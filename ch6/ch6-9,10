@@ -1,0 +1,60 @@
+1. 2020-12-10 오후 12시 0분 시청
+
+	1. 클래스 == 데이터 + 함수
+		
+	  (리모콘)	 (리모콘 묶음)   						(설계도)
+		변수   -->   배열    -->     구조체              ---->    클래스
+		 1			1		 int 1				 int 1			+ 함수
+		 			2		float 10.0f			float 10.0f		
+		 			3		char 'a'			char 'a'
+		 			4		String "ABC"		String "ABC"
+
+	     1) 변수 : 하나의 데이터를 저장할 수 있는 공간
+	     2) 배열 : "같은 종류"의 여러 데이터를 하나로 저장할 수 있는 공간
+	     3) 구조체 : 서로 관련 있든말든 여러 데이터를 하나로 저장할 수 있는 공간
+	     4) 클래스 : 데이터와 함수의 결합(구조체 + 함수)
+	     	(클래스는 구조체와 함수를 왜 묶었는가???  서로 관련있으니깐)
+	     	
+	2. 클래스의 정의
+		1) 설계도
+		2) 데이터(구조체) + 함수
+		3) 사용자 정의 타입
+
+		
+	3.  class 사용자 정의 타입 안했을 경우
+		int hour;
+		int min;
+		int sec;
+		
+		int hour1, hour2, hour3;
+		int min1, min2, min3;
+		int sec1, sec2, sec3;
+		
+		int[] hour = new int[3];
+		int[] min = new int[3];
+		int[] sec = new int[3];
+		(시간은 시간끼리, 분은 분끼리 뭉쳤다.)
+		(리모콘 하나에는 시간, 분, 초가 다 있어야한다)
+		
+		
+		class 사용자가 정의 했을 경우
+		class Time {
+			int hour;
+			int minute;
+			int second;
+		}
+		
+		Time t = new Time();
+		
+		Time t1 = new Time();
+		Time t2 = new Time();
+		Time t3 = new Time();
+		
+		Time[] t = new Time[3];
+		Time t[0] = new Time();
+		Time t[1] = new Time();
+		Time t[2] = new Time();
+		(초기값을 지정 안해주니 꼭 내가 지정해줘야한다. 절대 쓸대 없는 일 하는게 아니다.)
+		
+		
+		

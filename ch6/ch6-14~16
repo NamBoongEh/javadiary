@@ -1,0 +1,20 @@
+1. 2020-12-10 오후 3시 0분 시청
+
+	1. 재귀함수 문제 풀 때 사용했던 것 == 메서드
+	
+		public static void main(String[] args){
+			int a = 0;
+			answer(a);
+		}
+		public static int answer(int a){
+			int b = a + 1;
+			return b;
+		}
+		
+		늘 쓰던 answer가 메서드였다!
+		
+		지역변수(lv) : 메서드 내에 선언된 변수
+					1) int a
+					2) int b
+					위에서 지역변수는 2개이다!
+					
