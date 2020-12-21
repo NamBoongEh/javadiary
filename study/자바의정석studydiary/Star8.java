@@ -5,14 +5,20 @@ public class Star8 {
 	public static void main(String[] args) {
 
 		for(int i=0; i<5; i++) {
-			for(int k=4-i; k>0; k--) {
-				System.out.print(" ");
+			for(int j=0; j<10; j++) {
+				if(j<4 && i+j<4) {
+					System.out.print(" ");
+				}
+				else if(j>4 && j-i>4) {
+					System.out.print(" ");
+				}
+				else {
+					System.out.print("*");
+				}
 			}
-			for(int j=0; j<=i*2; j++) {
-				System.out.print("*");
-			}
-			System.out.print("\n");
+			System.out.println();
 		}
 	}
 
 }
+  
