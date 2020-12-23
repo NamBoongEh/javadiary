@@ -6,10 +6,7 @@ public class Star8 {
 
 		for(int i=0; i<5; i++) {
 			for(int j=0; j<10; j++) {
-				if(j<4 && i+j<4) {
-					System.out.print(" ");
-				}
-				else if(j>4 && j-i>4) {
+				if((j<4 && i+j<4) || (j>4 && j-i>4)) {
 					System.out.print(" ");
 				}
 				else {
