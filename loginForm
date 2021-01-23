@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,88 +7,32 @@
 <title>loginForm</title>
 </head>
 <body>
-<form action="/LoginAction" method=post>
-	id: <input name="id" type=text value=""><br>
-	pwd: <input name="pwd" type=text value=""><br>
-		
-		<input type="checkbox" checked="checked"> Remember ID<br>
-		
-		<input type=submit value="Login">
+
+<% String msg = (String)request.getAttribute("msg");
+	if(msg!=null){
+%>
+<label><%=msg%></label>
+<%} %>
+
+	<%
+	Cookie[] cookies = request.getCookies();
+	String rememberID = "";
+	if(cookies!=null){
+        for(Cookie i:cookies){
+            if(i.getName().equals("saveId")){
+            	rememberID=i.getValue();
+            }
+        }
+    }
+	%>
+    
+<form action="/LoginAction" method=get>
+	id : <input name="id" type=text value="<%=rememberID != "" ? rememberID : "" %>"><br>    
+    pwd : <input name="pwd" type=password value=""><br>
+	<input type="checkbox" name="saveID" checked="checked"> id 기억하기<br>
+	<button type=submit>Login</button><br>
+	
 </form>
 
-</body>
-</html>
-
-
-
-
-package com.codechobo;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-@WebServlet("/LoginAction")
-public class LoginAction extends HttpServlet{
-	private static final long serialVersionUID = 1L;
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
-		doGet(request, response);
-	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException{
-		
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");		
-		
-		if(id.equals("nam") && pwd.equals("1234")) {
-			RequestDispatcher reqDis = request.getRequestDispatcher("/index.jsp");
-			reqDis.forward(request, response);
-		}
-		else {
-			RequestDispatcher reqDis = request.getRequestDispatcher("/loginForm.html");
-			reqDis.forward(request, response);
-		}
-		
-	}
-}
-
-
-
-
-
-
-
-
-<%@ page import="java.util.*" contentType="text/html; charset=UTF-8"%>
-<% request.setCharacterEncoding("utf-8");%>
-<html>
-<head>
-    <title>LoginAction</title>
-</head>
-
-<body>
-	<%
-	if("checkbox".equals("checked")){
-		Cookie cookie = new Cookie("id", "pwd");
-		response.addCookie(cookie);
-	}
-	%>
-	
-	쿠키 꺼내기~ <%=request.getCookies()%><br>
-
-	만세 드디어 해냈다! \^0^/ HOME<br>
-	당신의 id : <%=request.getParameter("id") %><br>
-	당신의 password : <%=request.getParameter("pwd") %><br>
-	
 </body>
 </html>
