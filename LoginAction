@@ -1,0 +1,49 @@
+package com.codechobo;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/LoginAction")
+public class LoginAction extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException{
+		doGet(request, response);
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException{
+		
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		
+		if(id.equals("nam") && pwd.equals("1234")) {
+//			response.sendRedirect("/");
+			String saveID =request.getParameter("saveID");
+			if(saveID.equals("on")) {
+				Cookie c = new Cookie("saveId",id);	
+				response.addCookie(c);
+			}
+			if(saveID.equals("off")) {
+				Cookie c = new Cookie("saveId",id);
+				c.setMaxAge(0);
+				response.addCookie(c);
+			}
+		}
+		else {
+			request.setAttribute("msg", "id 또는 비번이 틀립니다.");
+			RequestDispatcher reqDis = request.getRequestDispatcher("/loginForm.jsp");
+			reqDis.forward(request, response);
+		}
+		
+	}
+}
+
