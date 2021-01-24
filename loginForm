@@ -26,7 +26,7 @@
     }
 	%>
     
-<form action="/LoginAction" method=get>
+<form action="/LoginAction" method=post>
 	id : <input name="id" type=text value="<%=rememberID != "" ? rememberID : "" %>"><br>    
     pwd : <input name="pwd" type=password value=""><br>
 	<input type="checkbox" name="saveID" checked="checked"> id 기억하기<br>
