@@ -26,17 +26,19 @@ public class LoginAction extends HttpServlet{
 		String pwd = request.getParameter("pwd");
 		
 		if(id.equals("nam") && pwd.equals("1234")) {
-//			response.sendRedirect("/");
-			String saveID =request.getParameter("saveID");
-			if(saveID.equals("on")) {
-				Cookie c = new Cookie("saveId",id);	
+			String saveID = "";
+			try {
+				saveID =request.getParameter("saveID");
+				if(saveID.equals("on")) {
+					Cookie c = new Cookie("saveId",id);	
+					response.addCookie(c);
+				}
+			}
+			catch(Exception ex) {
+				Cookie c = new Cookie("incorrect",id);
 				response.addCookie(c);
 			}
-			if(saveID.equals("off")) {
-				Cookie c = new Cookie("saveId",id);
-				c.setMaxAge(0);
-				response.addCookie(c);
-			}
+			response.sendRedirect("/");
 		}
 		else {
 			request.setAttribute("msg", "id 또는 비번이 틀립니다.");
