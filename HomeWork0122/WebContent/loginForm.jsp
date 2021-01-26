@@ -2,7 +2,6 @@
 <% request.setCharacterEncoding("utf-8");%>
 
 <% 
-
 	String msg = (String)request.getAttribute("msg");
 	if(msg==null){
 		msg = "";

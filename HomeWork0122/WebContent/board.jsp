@@ -2,11 +2,10 @@
 <% request.setCharacterEncoding("utf-8");%>
 
 <% 
-//안되는거. 
-// 1. 세션 생성 세션 읽기
-// 2. 없다! \^0^/
-	String name = (String)session.getAttribute("id");
-	if(!name.equals("id")){
+//이게 왜 되는지 f12를 눌러봐도 모르겠다
+	String name = "";
+	name = (String)session.getAttribute("id");
+	if(!(name!=null && name.equals("value"))){
 %>
 		<jsp:forward page="loginForm.jsp"/>
 <%

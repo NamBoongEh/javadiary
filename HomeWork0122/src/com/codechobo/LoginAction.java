@@ -26,12 +26,14 @@ public class LoginAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("password");
+
 		
 		if(id.equals("nam") && pwd.equals("1234")) {
-			// 여기에 세션 추가해야함(현재 무한루프 도는중)
-			HttpSession session = request.getSession(true);
-			session.setAttribute("key", 1234);
-			response.sendRedirect("index.jsp");  
+			HttpSession session = request.getSession();
+			session = request.getSession(true);
+			// 왜 이 값을 어디에서도 찾아 볼 수가 없을까
+			session.setAttribute("id", "value");
+			response.sendRedirect("board.jsp");  
 		}
 		else {
 			request.setAttribute("msg", "ID 또는 PWD가 틀립니다.");
