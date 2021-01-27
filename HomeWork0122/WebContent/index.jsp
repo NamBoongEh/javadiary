@@ -7,11 +7,9 @@
 </head>
 
 <body>
-	<form action="board.jsp" >
 	Home<br>
 	Login<br>
-	<button type="submit">Board</button>
-	</form>
+	<a href="board.jsp">board</a>
 
 </body>
 </html>

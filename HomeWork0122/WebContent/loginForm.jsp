@@ -3,9 +3,8 @@
 
 <% 
 	String msg = (String)request.getAttribute("msg");
-	if(msg==null){
+	if(msg==null)
 		msg = "";
-	}
 %>
 
 
@@ -23,7 +22,6 @@
 	id : <input name="id" type=text placeholder="id를 적으세요"><br>
 	pwd : <input name="password" type=text placeholder="password를 적으세요"><br>
 	<button type="submit">Login</button>
-	
 	</form>
 	
 

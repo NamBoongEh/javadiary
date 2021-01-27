@@ -1,7 +1,6 @@
 package com.codechobo;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,13 +25,16 @@ public class LoginAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("password");
-
 		
 		if(id.equals("nam") && pwd.equals("1234")) {
 			HttpSession session = request.getSession();
 			session = request.getSession(true);
 			// 왜 이 값을 어디에서도 찾아 볼 수가 없을까
 			session.setAttribute("id", "value");
+			
+			System.out.println("세션 값은 " + (String)session.getAttribute("id"));
+			
+			// ** 목표 : 하드 코딩 바꾸기
 			response.sendRedirect("board.jsp");  
 		}
 		else {
@@ -41,8 +43,7 @@ public class LoginAction extends HttpServlet {
 			reqDis.forward(request, response);
 		}
 	}
-
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
