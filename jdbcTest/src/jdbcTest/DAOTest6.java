@@ -5,15 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-public class DAOTest4 {
+public class DAOTest6 {
 
 	public static void main(String[] args) {
-		// 객체 u에 저장된 user_id와 동일한 행의 정보를 update하는 메서드
-		selectUser("ff22f");
+
+		List<User> list = selectAllUsers();
+		System.out.println(list);
 		
 	}
-	static User4 selectUser(String userId) {
+	
+	static List<User> selectAllUsers(){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,27 +27,25 @@ public class DAOTest4 {
 			String pw = "1234";
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url,id,pw);
+			conn = DriverManager.getConnection(url, id, pw);
 			
-			String sql = "select * from USER_INFO where user_id=?";
+			System.out.println("연결 성공!^-^b");
+			
+			String sql = "select * from user_info";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				System.out.println(rs.getString("user_id"));
-				System.out.println(rs.getString("password"));
-				System.out.println(rs.getString("name"));
+				System.out.print(rs.getString("user_id") + "\t");
+				System.out.print(rs.getString("password") + "\t");
+				System.out.print(rs.getString("name") + "\t");
 				System.out.println(rs.getString("email"));
-				
-			}
-			
-			
+			}	
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("테이블 호출 실패ㅠㅠ");
+			System.out.println("연결 실패ㅠㅠ");
 		}
 		finally {
 			if(rs!=null) {
@@ -70,20 +71,8 @@ public class DAOTest4 {
 			}
 		}
 		
-		return null;
-	}
-	class User4{
-		String id;
-		String name;
-		String password;
-		String email;
 		
-		public User4(String id, String name, String password, String email) {
-			this.id = id;
-			this.name = name;
-			this.password = password;
-			this.email = email;
-		}
+		return null;
 	}
 
 }
