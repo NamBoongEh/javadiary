@@ -8,32 +8,46 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAOTest6 {
+public class DAOTest7 {
 
 	public static void main(String[] args) {
-
-		List<User6> list = selectAllUsers();
+		UserDao udao = UserDao.getInstance();
+		List<User7> list = udao.selectAllUsers();
 		System.out.println(list);
-		
+	}
+}
+
+class UserDao{
+	private static UserDao instance;
+	
+	// UserDao ÏÉùÏÑ±Ïûê
+	private UserDao() {
 	}
 	
-	static List<User6> selectAllUsers(){
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		User6 u = null;
-		ArrayList<User6> list = new ArrayList<User6>();
-		
+	// getInstance() Î©îÏÑúÎìú Ï†ïÏùò
+	public static UserDao getInstance() {
+		if(instance==null) {
+			instance = new UserDao();
+		}
+		return instance;
+	}
+	
+	List<User7> selectAllUsers(){
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	User7 u = null;
+	ArrayList<User7> list = new ArrayList<User7>();
+
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String id = "student";
 			String pw = "1234";
 			
-					
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, id, pw);
 			
-			System.out.println("ø¨∞· º∫∞¯!^-^b");
+			System.out.println("Ïó∞Í≤∞ ÏÑ±Í≥µ!^-^b");
 			
 			String sql = "select * from user_info";
 			pstmt = conn.prepareStatement(sql);
@@ -46,14 +60,13 @@ public class DAOTest6 {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				
-				u = new User6(user_id,password,name,email);
+				u = new User7(user_id, password, name, email);
 				list.add(u);
 			}
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("ø¨∞· Ω«∆–§–§–");
+			System.out.println("Ïó∞Í≤∞ Ïã§Ìå®„Ö†„Ö†");
 		}
 		finally {
 			if(rs!=null) {
@@ -82,16 +95,15 @@ public class DAOTest6 {
 		
 		return list;
 	}
-
 }
 
-class User6{
+class User7{
 	String id;
 	String name;
 	String password;
 	String email;
 
-	public User6(String id, String name, String password, String email) {
+	public User7(String id, String name, String password, String email) {
 		super();
 		this.id = id;
 		this.name = name;

@@ -25,7 +25,7 @@ public class LoginAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-
+			
 		if(id.equals("nam") && pwd.equals("1234")) {
 			HttpSession session = request.getSession();
 			
